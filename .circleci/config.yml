@@ -12,7 +12,9 @@ jobs:
     steps:
       - checkout
       - run: docker info
-      - run: docker build --rm=false -t storager/docker:test .
+      - run: docker build --rm=false -t trtb1/testci:latest .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker push trtb1/testci:latest      
 workflows:
   version: 2
   build_and_deploy:
